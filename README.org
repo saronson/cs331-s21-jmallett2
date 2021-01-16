@@ -1,1 +1,9 @@
 #+TITLE: CS331 Programming Assignments
+
+* Lab Submission
+
+Welcome to **CS 331: Data Structures and Algorithms**!
+
+You will be using github to submit all lab assignments for this class.
+
+* Lab 00
