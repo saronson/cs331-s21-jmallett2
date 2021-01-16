@@ -4,7 +4,4 @@
 
 Welcome to **CS 331: Data Structures and Algorithms**!
 
-You will be using github to submit all lab assignments for this class. Labs will be added to the github repository we created for you
-
-* Lab 00 - Preliminaries
-* Lab 01 - Basic Python
+You will be using github to submit all lab assignments for this class. Labs will be added to the github repository we created for you. For the deadlines for assignments please see http://www.cs.iit.edu/~glavic/cs331/2021-spring/labs/.
