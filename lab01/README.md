@@ -2,7 +2,7 @@
 
 ## Exercise 1: Perfect Numbers
 
-Most of the lab notebooks you'll be working on for this class will come with a fair bit of skeleton code --- i.e., stubbed out classes and functions that you need to complete or modify to get working correctly.
+Most of the lab notebooks you'll be working on for this class will come with a fair bit of skeleton code, i.e., stubbed out classes and functions that you need to complete or modify to get working correctly.
 
 In the cell below, for instance, you'll find a stubbed out function named `is_perfect`, which should return `True` if the number passed to it is a "perfect" number, and `False` otherwise.
 
@@ -36,7 +36,7 @@ def multiples_of_3_and_5(n):
 
 Given a perimeter of 60, we can find two right triangles with integral length sides: `[(10, 24, 26), (15, 20, 25)]`. Complete the following function, which takes an integer `p` and returns the number of unique integer right triangles with perimeter `p`.
 
-Note that your solution should take care to limit the number of triangles it tests --- **your function must complete in under 3 seconds for all values of `p` used in the test cells below to earn credit.**
+Note that your solution should take care to limit the number of triangles it tests --- **your function must complete in under 3 seconds for all values of `p` used in the tests to earn credit.**
 
 ## Exercise 4: Simple ASCII Art
 
