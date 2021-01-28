@@ -1,0 +1,66 @@
+
+<html>
+  <head>
+    <title>Lab 00 - Graded Solution</title>
+  </head>
+  <body>
+    <h1>Lab 00 - Graded Solution</h1>
+    <p><b>You scored 10% = 0.1 points for this lab.</b></p>
+    <ul>
+      <li><b>Must return a string</b>
+      <ul>
+      <li>Grade Percentage: 10</li>
+      <li>Your solution succeeded taking 0.071 sec</Li>
+      </ul>
+      </li>
+      <li><b>String should not be empty</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 0.075 sec</Li>
+<li><pre>AssertionError: my_palindrome() return empty string</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpnwjpe67m/lab00-test.py", line 17, in nonEmpty
+    assert isinstance(pal, str) and pal.strip(), "my_palindrome() return empty string"
+AssertionError: my_palindrome() return empty string
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Length should be greater or equal to 2</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 0.073 sec</Li>
+<li><pre>AssertionError: len(pal) = 0 <= 1</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpu67u01o6/lab00-test.py", line 25, in lenLargerTwo
+    assert isinstance(pal, str) and len(pal) > 1, f"len(pal) = {len(pal)} <= 1"
+AssertionError: len(pal) = 0 <= 1
+</pre></li>
+      </ul>
+      </li>
+      <li><b>String should be a palindrome</b>
+      <ul>
+      <li>Grade Percentage: 50</li>
+      <li>Your solution failed this test case! taking 0.074 sec</Li>
+<li><pre>AssertionError: '' is not a palindrom</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpvuolhj5h/lab00-test.py", line 33, in isPalindrome
+    assert isinstance(pal, str) and len(pal) > 1 and pal == pal[::-1], f"'{pal}' is not a palindrom"
+AssertionError: '' is not a palindrom
+</pre></li>
+      </ul>
+      </li>
+    </ul>
+  </body>
+</html>
