@@ -129,7 +129,7 @@ def test2():
     test2_1()
     test2_2()
 
-# 10 Points
+# 15Points
 def test2_1():
     print("\t-search in hello world")
     tc = unittest.TestCase()
