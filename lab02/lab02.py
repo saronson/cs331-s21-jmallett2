@@ -1,5 +1,6 @@
 from unittest import TestCase
 import random
+import urllib.request
 
 ROMEO_SOLILOQUY = """
         But, soft! what light through yonder window breaks?
@@ -65,7 +66,7 @@ def test1_1():
 
 # 30 Points
 def test1_2():
-    import urllib.request
+    """Test your code on Peter Pan."""
     PETER_PAN_URL = 'https://moss.cs.iit.edu/cs331/data/peterpan.txt'
     peter_pan_text = urllib.request.urlopen(PETER_PAN_URL).read().decode()
     tc = TestCase()
