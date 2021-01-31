@@ -10,7 +10,7 @@ You will be using github to submit all lab assignments for this class. Labs will
 
 For your convenience we also include notebook templates and the notebooks completed in class here. Please do not modify these notebooks directly in the repository because I will be updating them over time. Just create a copy of these folders and then modify them as you please.
 
-~~~
+#+begin_example
 ├── README.org
 ├── lab00
 │   ├── README.md
@@ -25,4 +25,4 @@ For your convenience we also include notebook templates and the notebooks comple
 └── notebooks-completed
     └── python-language-into-1-completed.ipynb
     ...
-~~~
+#+end_example
