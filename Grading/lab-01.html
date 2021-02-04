@@ -1,0 +1,100 @@
+
+<html>
+  <head>
+    <title>Lab 01 - Graded Solution</title>
+  </head>
+  <body>
+    <h1>Lab 01 - Graded Solution</h1>
+    <p><b>You scored 0% = 0.0 points for this lab.</b></p>
+    <ul>
+      <li><b>Testing whether numbers are correctly identified as perfect</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 0.091 sec</Li>
+<li><pre>AssertionError: 6 should be perfect</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmp8fmdnv9i/lab01-test.py", line 29, in isPerfect
+    assert m.module.is_perfect(n), '{} should be perfect'.format(n)
+AssertionError: 6 should be perfect
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Compute sums of multiples of 5</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 0.094 sec</Li>
+<li><pre>AssertionError: expected
+23
+ but got
+None for multiples_of_3_and_5(10)</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmp8unegusm/lab01-test.py", line 40, in multiples
+    assertEquals(m.module.multiples_of_3_and_5(10), 23, TEMPLATE + "multiples_of_3_and_5(10)")
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/assertions.py", line 29, in assertEquals
+    raise AssertionError(message)
+AssertionError: expected
+23
+ but got
+None for multiples_of_3_and_5(10)
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Number of right triangles</b>
+      <ul>
+      <li>Grade Percentage: 30</li>
+      <li>Your solution failed this test case! taking 0.088 sec</Li>
+<li><pre>AssertionError: expected
+2
+ but got
+None for integer_right_triangles(60)</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmppsg0qzib/lab01-test.py", line 50, in lenLargerTwo
+    assertEquals(m.module.integer_right_triangles(60), 2, TEMPLATE + "integer_right_triangles(60)")
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/assertions.py", line 29, in assertEquals
+    raise AssertionError(message)
+AssertionError: expected
+2
+ but got
+None for integer_right_triangles(60)
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Check outputs of gen_pattern</b>
+      <ul>
+      <li>Grade Percentage: 30</li>
+      <li>Your solution failed this test case! taking 0.072 sec</Li>
+<li><pre>AssertionError: expected
+@
+ but got
+ for gen_pattern(@)</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmptg0kz7fy/lab01-test.py", line 66, in genPatterns
+    assertEquals(out.getvalue().strip(), '@', TEMPLATE + "gen_pattern(@)")
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/assertions.py", line 29, in assertEquals
+    raise AssertionError(message)
+AssertionError: expected
+@
+ but got
+ for gen_pattern(@)
+</pre></li>
+      </ul>
+      </li>
+    </ul>
+  </body>
+</html>
