@@ -1,4 +1,5 @@
 from unittest import TestCase
+from collections import OrderedDict 
 import random
 import urllib.request
 
@@ -34,7 +35,42 @@ ROMEO_SOLILOQUY = """
 # Implement this function
 def compute_ngrams(toks, n=2):
     """Returns an n-gram dictionary based on the provided list of tokens."""
-    pass
+    #dict  list    tuple
+    #{'I': [('really', 'really')], 'really': [('really', 'like'), ('like', 'cake.')]}
+    
+    
+    t = {}
+
+
+    
+    for i in range(0, len(toks)):
+        key = toks[i]
+        next = []
+
+        if i + n > len(toks):
+            break
+
+        for x in range(1,n):
+            if i + x <= len(toks)-1:
+                next.append(toks[i + x])
+        
+
+
+
+        if key in t:
+            t[key].append(tuple(next))
+        else:
+            t[key] = [tuple(next)]
+
+    return t
+
+
+
+
+
+
+
+
 
 def test1():
     test1_1()
@@ -93,7 +129,32 @@ def test1_2():
 ################################################################################
 # Implement this function
 def gen_passage(ngram_dict, length=100):
-    pass
+    
+    start = random.choice(sorted(ngram_dict.keys()))
+    passage = start
+
+    for x in range(1,length):
+        s = ' '
+        #if x == length - 1:
+           # s = ' '
+
+        if start in ngram_dict.keys():
+            t = random.choice(ngram_dict[start])
+            for i in t:
+                passage = passage + s + i
+            start = t[-1]
+        else:
+            start = random.choice(sorted(ngram_dict.keys()))
+            passage = passage + s + start
+    return passage
+    
+    
+    
+    
+    
+    
+    
+
 
 # 50 Points
 def test2():
@@ -115,3 +176,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

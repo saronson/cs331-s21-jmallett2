@@ -1,5 +1,6 @@
 import unittest
 import sys
+import math
 from contextlib import contextmanager
 from io import StringIO
 
@@ -22,7 +23,21 @@ def captured_output():
 
 # implement this function
 def is_perfect(n):
-    pass
+    t = 1
+    if not isinstance(n,int):
+        return False
+    
+    if n == 1:
+        return False
+
+    for x in range(2,n):
+        if n % x == 0:
+            t = t + x
+        
+    if t == n:
+        return True
+    else:
+        return False
 
 # (3 points)
 def test1():
@@ -40,7 +55,13 @@ def test1():
 
 # implement this function
 def multiples_of_3_and_5(n):
-    pass
+    sum = 0
+    for x in range(1,n):
+        if x % 3 == 0 or x % 5 == 0:
+            sum = sum + x
+    
+    return sum
+   
 
 # (3 points)
 def test2():
@@ -53,7 +74,17 @@ def test2():
 # EXERCISE 3
 #################################################################################
 def integer_right_triangles(p):
-    pass
+    hmax = int(p/2)
+    t = 0
+
+    for a in range(1,hmax):
+        for b in range(a,hmax):
+            h = math.sqrt(a * a + b * b)
+            if h % 1 == 0 and a + b + h == p:
+                t = t + 1
+
+
+    return t
 
 def test3():
     tc = unittest.TestCase()
@@ -67,7 +98,47 @@ def test3():
 
 # implement this function
 def gen_pattern(chars):
-    pass
+    l = len(chars)
+
+    max = l * 2 - 1
+    size = max * 2 - 1
+
+    for i in range(l - 1 , -1, -1):
+        line = ''
+        if i == l - 1:
+            print(chars[i].center(size, '.'))
+            continue
+
+        for x in range(l-1,i, -1):
+            line = line + chars[x] 
+    
+        for z in range(i, l):
+            line = line + chars[z] 
+
+        line = '.'.join(line).center(size,'.')
+        print(line)
+
+    for i in range(1, l):
+        line = ''
+        if i == l - 1:
+            print(chars[i].center(size, '.'))
+            continue
+
+        for x in range(l-1,i, -1):
+            line = line + chars[x] 
+    
+        for z in range(i, l):
+            line = line + chars[z] 
+
+        line = '.'.join(line).center(size,'.')
+        print(line)
+
+    
+    
+    
+    
+    
+    
 
 def test4():
     tc = unittest.TestCase()
