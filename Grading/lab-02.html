@@ -1,0 +1,80 @@
+
+<html>
+  <head>
+    <title>Lab 02 - Graded Solution</title>
+  </head>
+  <body>
+    <h1>Lab 02 - Graded Solution</h1>
+    <p><b>You scored 0% = 0.0 points for this lab.</b></p>
+    <ul>
+      <li><b>A smaller test case for your ngram function.</b>
+      <ul>
+      <li>Grade Percentage: 10</li>
+      <li>Your solution failed this test case! taking 0.110 sec</Li>
+<li><pre>AssertionError: Expected {'i': [('really',)], 'like': [('cake.',)], 'really': [('really',), ('like',)]} but got None</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmp_59hvir2/lab02-test.py", line 38, in test1_1
+    assertEquals(m.module.compute_ngrams(simple_toks),
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/assertions.py", line 29, in assertEquals
+    raise AssertionError(message)
+AssertionError: Expected {'i': [('really',)], 'like': [('cake.',)], 'really': [('really',), ('like',)]} but got None
+</pre></li>
+      </ul>
+      </li>
+      <li><b>A small test case for your ngram function with Romeo & Juliette.</b>
+      <ul>
+      <li>Grade Percentage: 10</li>
+      <li>Your solution failed this test case! taking 0.111 sec</Li>
+<li><pre>TypeError: 'NoneType' object is not subscriptable</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpjobanke7/lab02-test.py", line 52, in test1_1
+    assertEquals(dct['but'], [('sick', 'and', 'green'), ('fools', 'do', 'wear')])
+TypeError: 'NoneType' object is not subscriptable
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Test your ngram function on Peter Pan.</b>
+      <ul>
+      <li>Grade Percentage: 30</li>
+      <li>Your solution failed this test case! taking 0.595 sec</Li>
+<li><pre>TypeError: 'NoneType' object is not subscriptable</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpa4n8vbnn/lab02-test.py", line 70, in test1_3
+    assertEquals(dct['crocodile'],
+TypeError: 'NoneType' object is not subscriptable
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Test case for random passage generation.</b>
+      <ul>
+      <li>Grade Percentage: 50</li>
+      <li>Your solution failed this test case! taking 0.116 sec</Li>
+<li><pre>AssertionError: Expected like cake. i really really really really like cake. i but got None</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpj34016na/lab02-test.py", line 93, in test1_3
+    assertEquals(m.module.gen_passage(m.module.compute_ngrams(simple_toks), 10),
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/assertions.py", line 29, in assertEquals
+    raise AssertionError(message)
+AssertionError: Expected like cake. i really really really really like cake. i but got None
+</pre></li>
+      </ul>
+      </li>
+    </ul>
+  </body>
+</html>
