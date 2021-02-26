@@ -8,16 +8,13 @@ For this assignment you will complete the implementation of the array-backed lis
 
 For the `ArrayList`'s underlying data storage mechanism you will use the built-in Python list, constrained so that only the following operations (as would be supported by a primitive array) are available:
 
+- create a "list" with `n` elements
 - `lst[i]` for getting and setting a value at an *existing, positive* index `i`
 - `len(lst)` to obtain the number of slots
-- `lst.append(None)` to grow the list by *one slot at a time*
-- `del lst[len(lst)-1]` to delete the last slot in a list
 
 ### `ConstrainedList`
 
 To help keep us honest, we've defined an API-constrained sub-class of the built-in list -- `ConstrainedList` -- an instance of which is assigned to the `data` attribute of each `ArrayList`. You should not change the definition of `ConstrainedList`, and ensure that your `ArrayList` implementation never assigns a regular Python list to its `data` attribute. So long as you use `ConstrainedList` in your implementation, you can be certain you're not performing any "illegal" operations (i.e., outside the constraints established above). If you invoke a disallowed operation, an appropriate exception will be raised.
-
-Be sure to evaluate the following cell before testing your `ArrayList` implementation.
 
 ### `ArrayList`
 

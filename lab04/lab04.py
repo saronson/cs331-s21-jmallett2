@@ -14,8 +14,8 @@ class ConstrainedList (list):
        DO NOT CHANGE THIS CODE!!!!!
     """
 
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, n):
+        super().__init__([None] * n)
 
     def __getitem__(self, idx):
         if idx < 0 or idx >= len(self):
@@ -28,13 +28,15 @@ class ConstrainedList (list):
         super().__setitem__(idx, value)
 
     def __getattribute__(self, name):
-        if name in ('insert', 'min', 'max',
+        if name in ('insert', 'min', 'max', 'append', 'extend'
                     'index', 'count', 'clear', 'copy'):
             raise AttributeError('Method "' + name + '" not supported on constrained list!')
         else:
             return super().__getattribute__(name)
 
     # __getattribute__ isn't called for special methods, so the following are needed
+    def __delitem__(self, value):
+        raise AttributeError('Constrained lists do not support `del`!')
 
     def __add__(self, value):
         raise AttributeError('Constrained lists do not support `+`!')
@@ -62,8 +64,8 @@ class ConstrainedList (list):
 ################################################################################
 # YOU SHOULD IMPLEMENT THIS CLASS
 class ArrayList:
-    def __init__(self):
-        self.data = ConstrainedList() # don't change this line!
+    def __init__(self, n=0):
+        self.data = ConstrainedList(n) # don't change this line!
 
     ### subscript-based access ###
 
