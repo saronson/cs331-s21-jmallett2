@@ -235,8 +235,9 @@ class ArrayList:
 def arrayListToList(a):
     return list(a.data._as_list()[:len(a)])
 
+
 ########################################
-# 10 points
+# 15 points
 def test_case_1():
     test_log("testing subscript-based acess ")
 
@@ -306,7 +307,7 @@ def test_case_2():     # (4 points) test stringification
     suc()
 
 ########################################
-# 10 points
+# 15 points
 def test_case_3():
     test_log("testing single-element manipulation ")
     tc = TestCase()
@@ -347,7 +348,7 @@ def test_case_3():
     suc()
 
 ########################################
-# 10 points
+# 15 points
 def test_case_4():
     test_log("testing predicates")
     tc = TestCase()
@@ -376,7 +377,7 @@ def test_case_4():
     suc()
 
 ########################################
-# 10 points
+# 15 points
 def test_case_5():
     test_log("testing queries")
     # (10 points) test queries
@@ -415,8 +416,8 @@ def test_case_5():
     suc()
 
 ########################################
-# points
-# (6 points) test bulk operations
+# 15 points
+# test bulk operations
 def test_case_6():
     test_log("testing bulk operations")
     tc = TestCase()
@@ -455,7 +456,7 @@ def test_case_6():
     suc()
 
 ########################################
-# (2 points) test iteration
+# 15 points
 def test_case_7():
     test_log("testing iteration")
     tc = TestCase()
