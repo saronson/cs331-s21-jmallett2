@@ -14,8 +14,15 @@ class ConstrainedList (list):
        DO NOT CHANGE THIS CODE!!!!!
     """
 
-    def __init__(self, n):
+    def __init__(self, n=10):
         super().__init__([None] * n)
+
+    @staticmethod
+    def create(l):
+        r = ConstrainedList(len(l))
+        for i in range(0,len(l)):
+            r[i] = l[i]
+        return r
 
     def __getitem__(self, idx):
         if idx < 0 or idx >= len(self):
@@ -66,6 +73,7 @@ class ConstrainedList (list):
 class ArrayList:
     def __init__(self, n=0):
         self.data = ConstrainedList(n) # don't change this line!
+        self.len = n # the attribute self.len should be record the length of the list (do not rename!)
 
     ### subscript-based access ###
 
@@ -97,12 +105,11 @@ class ArrayList:
         """Implements `del self[idx]`"""
         assert(isinstance(idx, int))
         nidx = self._normalize_idx(idx)
-        if nidx >= len(self.data):
+        if nidx >= self.len:
             raise IndexError
-        for i in range(nidx+1, len(self.data)):
+        for i in range(nidx+1, self.len):
             self.data[i-1] = self.data[i]
-        del self.data[len(self.data)-1]
-
+        self.len += -1
 
     ### stringification ###
 
@@ -223,9 +230,10 @@ class ArrayList:
         ### BEGIN SOLUTION
         ### END SOLUTION
 
-
 ################################################################################
 # TEST CASES
+def arrayListToList(a):
+    return list(a.data._as_list()[:len(a)])
 
 ########################################
 # 10 points
@@ -235,7 +243,8 @@ def test_case_1():
     tc = TestCase()
     lst = ArrayList()
     data = [1, 2, 3, 4]
-    lst.data = ConstrainedList(data)
+    lst.data = ConstrainedList.create(data)
+    lst.len = len(lst.data)
 
     for i in range(len(data)):
         tc.assertEqual(lst[i], data[i])
@@ -257,7 +266,8 @@ def test_case_1():
         tc.assertEqual(lst[i], data[i])
 
     data = [random.randint(1, 100) for _ in range(100)]
-    lst.data = ConstrainedList(data)
+    lst.data = ConstrainedList.create(data)
+    lst.len = len(lst.data)
     for i in range(len(data)):
         lst[i] = data[i] = random.randint(101, 200)
     for i in range(50):
@@ -284,11 +294,13 @@ def test_case_2():     # (4 points) test stringification
     tc.assertEqual('[]', str(lst))
     tc.assertEqual('[]', repr(lst))
 
-    lst.data = ConstrainedList([1])
+    lst.data = ConstrainedList.create([1])
+    lst.len = len(lst.data)
     tc.assertEqual('[1]', str(lst))
     tc.assertEqual('[1]', repr(lst))
 
-    lst.data = ConstrainedList([10, 20, 30, 40, 50])
+    lst.data = ConstrainedList.create([10, 20, 30, 40, 50])
+    lst.len = len(lst.data)
     tc.assertEqual('[10, 20, 30, 40, 50]', str(lst))
     tc.assertEqual('[10, 20, 30, 40, 50]', repr(lst))
     suc()
@@ -307,7 +319,7 @@ def test_case_3():
         lst.append(to_add)
 
     tc.assertIsInstance(lst.data, ConstrainedList)
-    tc.assertEqual(data, lst.data._as_list())
+    tc.assertEqual(data, arrayListToList(lst))
 
     for _ in range(100):
         to_ins = random.randrange(1000)
@@ -315,20 +327,20 @@ def test_case_3():
         data.insert(ins_idx, to_ins)
         lst.insert(ins_idx, to_ins)
 
-    tc.assertEqual(data, lst.data._as_list())
+    tc.assertEqual(data, arrayListToList(lst))
 
     for _ in range(100):
         pop_idx = random.randrange(len(data))
         tc.assertEqual(data.pop(pop_idx), lst.pop(pop_idx))
 
-    tc.assertEqual(data, lst.data._as_list())
+    tc.assertEqual(data, arrayListToList(lst))
 
     for _ in range(25):
         to_rem = data[random.randrange(len(data))]
         data.remove(to_rem)
         lst.remove(to_rem)
 
-    tc.assertEqual(data, lst.data._as_list())
+    tc.assertEqual(data, arrayListToList(lst))
 
     with tc.assertRaises(ValueError):
         lst.remove(9999)
@@ -342,18 +354,23 @@ def test_case_4():
     lst = ArrayList()
     lst2 = ArrayList()
 
-    lst.data = ConstrainedList([])
-    lst2.data = ConstrainedList([1, 2, 3])
+    lst.data = ConstrainedList.create([])
+    lst.len = len(lst.data)
+    lst2.data = ConstrainedList.create([1, 2, 3])
+    lst2.len = len(lst2.data)
     tc.assertNotEqual(lst, lst2)
 
-    lst.data = ConstrainedList([1, 2, 3])
+    lst.data = ConstrainedList.create([1, 2, 3])
+    lst.len = len(lst.data)
     tc.assertEqual(lst, lst2)
 
-    lst.data = ConstrainedList([])
+    lst.data = ConstrainedList.create([])
+    lst.len = len(lst.data)
     tc.assertFalse(1 in lst)
     tc.assertFalse(None in lst)
 
-    lst.data = ConstrainedList(range(100))
+    lst.data = ConstrainedList.create(range(100))
+    lst.len = len(lst.data)
     tc.assertFalse(100 in lst)
     tc.assertTrue(50 in lst)
     suc()
@@ -373,7 +390,8 @@ def test_case_5():
 
     import random
     data = [random.randrange(1000) for _ in range(100)]
-    lst.data = ConstrainedList(data)
+    lst.data = ConstrainedList.create(data)
+    lst.len = len(lst.data)
 
     tc.assertEqual(100, len(lst))
     tc.assertEqual(min(data), lst.min())
@@ -385,7 +403,8 @@ def test_case_5():
     with tc.assertRaises(ValueError):
         lst.index(1000)
 
-    lst.data = ConstrainedList([1, 2, 1, 2, 1, 1, 1, 2, 1])
+    lst.data = ConstrainedList.create([1, 2, 1, 2, 1, 1, 1, 2, 1])
+    lst.len = len(lst.data)
     tc.assertEqual(1, lst.index(2))
     tc.assertEqual(1, lst.index(2, 1))
     tc.assertEqual(3, lst.index(2, 2))
@@ -406,31 +425,33 @@ def test_case_6():
     lst3 = lst+lst2
 
     tc.assertIsInstance(lst3, ArrayList)
-    tc.assertEqual([], lst3.data._as_list())
+    tc.assertEqual([], arrayListToList(lst3))
 
     data  = [random.randrange(1000) for _ in range(50)]
     data2 = [random.randrange(1000) for _ in range(50)]
-    lst.data = ConstrainedList(data)
-    lst2.data = ConstrainedList(data2)
+    lst.data = ConstrainedList.create(data)
+    lst.len = len(lst.data)
+    lst2.data = ConstrainedList.create(data2)
+    lst2.len = len(lst.data)
     lst3 = lst + lst2
     tc.assertEqual(100, len(lst3))
-    tc.assertEqual(data + data2, lst3.data._as_list())
+    tc.assertEqual(data + data2, arrayListToList(lst3))
 
     lst.clear()
-    tc.assertEqual([], lst.data._as_list())
+    tc.assertEqual([], arrayListToList(lst))
 
-    lst.data = ConstrainedList([random.randrange(1000) for _ in range(50)])
+    lst.data = ConstrainedList.create([random.randrange(1000) for _ in range(50)])
     lst2 = lst.copy()
     tc.assertIsNot(lst, lst2)
     tc.assertIsNot(lst.data, lst2.data)
-    tc.assertEqual(lst.data._as_list(), lst2.data._as_list())
+    tc.assertEqual(arrayListToList(lst), arrayListToList(lst2))
 
     lst.clear()
     lst.extend(range(10))
     lst.extend(range(10,0,-1))
     lst.extend(data.copy())
     tc.assertEqual(70, len(lst))
-    tc.assertEqual(list(range(10))+list(range(10,0,-1))+data, lst.data._as_list())
+    tc.assertEqual(list(range(10))+list(range(10,0,-1))+data, arrayListToList(lst))
     suc()
 
 ########################################
@@ -442,7 +463,8 @@ def test_case_7():
 
     import random
     data = [random.randrange(1000) for _ in range(100)]
-    lst.data = ConstrainedList(data)
+    lst.data = ConstrainedList.create(data)
+    lst.len = len(lst.data)
     tc.assertEqual(data, [x for x in lst])
 
     it1 = iter(lst)
