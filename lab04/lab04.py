@@ -89,7 +89,7 @@ class ArrayList:
         """Implements `x = self[idx]`"""
         assert(isinstance(idx, int))
         nidx = self._normalize_idx(idx)
-        if nidx >= len(self.data):
+        if nidx >= self.len:
             raise IndexError
         return self.data[nidx]
 
@@ -97,7 +97,7 @@ class ArrayList:
         """Implements `self[idx] = x`"""
         assert(isinstance(idx, int))
         nidx = self._normalize_idx(idx)
-        if nidx >= len(self.data):
+        if nidx >= self.len:
             raise IndexError
         self.data[nidx] = value
 
