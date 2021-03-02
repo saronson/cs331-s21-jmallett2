@@ -6,8 +6,6 @@ class ConstrainedList (list):
 
         - `lst[i]` for getting and setting a value at an *existing, positive* index `i`
         - `len(lst)` to obtain the number of slots
-        - `lst.append(None)` to grow the list by *one slot at a time*
-        - `del lst[len(lst)-1]` to delete the last slot in a list
 
        All other operations will result in an exception being raised.
 
