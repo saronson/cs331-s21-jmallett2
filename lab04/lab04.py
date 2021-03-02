@@ -80,7 +80,7 @@ class ArrayList:
     def _normalize_idx(self, idx):
         nidx = idx
         if nidx < 0:
-            nidx += len(self.data)
+            nidx += self.len
             if nidx < 0:
                 nidx = 0
         return nidx
