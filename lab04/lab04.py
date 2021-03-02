@@ -208,6 +208,7 @@ class ArrayList:
 
     def clear(self):
         self.data = ConstrainedList() # don't change this!
+        self.len = 0 # don't change this!
 
     def copy(self):
         """Returns a new ArrayList instance (with a separate data store), that
