@@ -1,5 +1,6 @@
 from unittest import TestCase
 
+
 ################################################################################
 # STACK IMPLEMENTATION (DO NOT MODIFY THIS CODE)
 ################################################################################
@@ -160,6 +161,8 @@ class Queue:
         self.head = -1
         self.tail = -1
 
+    ### BEGIN SOLUTION
+    ### END SOLUTION
 
     def enqueue(self, val):
         ### BEGIN SOLUTION
