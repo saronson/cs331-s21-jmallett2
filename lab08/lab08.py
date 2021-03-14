@@ -56,7 +56,7 @@ class Heap:
 # 1. IMPLEMENT THIS HEAP
 ################################################################################
 
-# (1 point)
+# (6 point)
 def test_key_heap_1():
     from unittest import TestCase
     import random
@@ -70,7 +70,7 @@ def test_key_heap_1():
 
     tc.assertEqual(h.data, [97, 61, 65, 49, 51, 53, 62, 5, 38, 33])
 
-# (1 point)
+# (6 point)
 def test_key_heap_2():
     tc = TestCase()
     h = Heap(lambda x:-x)
@@ -81,7 +81,7 @@ def test_key_heap_2():
 
     tc.assertEqual(h.data, [5, 33, 53, 38, 49, 65, 62, 97, 51, 61])
 
-# (2 points)
+# (6 points)
 def test_key_heap_3():
     tc = TestCase()
     h = Heap(lambda s:len(s))
@@ -95,7 +95,7 @@ def test_key_heap_3():
     tc.assertEqual(h.data,
                    ['supercalifragilisticexpialidocious', 'abracadabra', 'hello', 'hi', '0'])
 
-# (2 points)
+# (6 points)
 def test_key_heap_4():
     tc = TestCase()
     h = Heap()
@@ -110,7 +110,7 @@ def test_key_heap_4():
     for x in range(999, -1000, -1):
         tc.assertEqual(x, h.pop())
 
-# (2 points)
+# (6 points)
 def test_key_heap_5():
     tc = TestCase()
     h = Heap(key=lambda x:abs(x))
@@ -147,19 +147,19 @@ def running_medians_naive(iterable):
             medians.append((values[i//2] + values[i//2+1]) / 2)
     return medians
 
-# (2 points)
+# (13 points)
 def test_median_1():
     tc = TestCase()
     tc.assertEqual([3, 2.0, 3, 6.0, 9], running_medians([3, 1, 9, 25, 12]))
 
-# (2 points)
+# (13 points)
 def test_median_2():
     tc = TestCase()
     vals = [random.randrange(10000) for _ in range(1000)]
     tc.assertEqual(running_medians_naive(vals), running_medians(vals))
 
 # MUST COMPLETE IN UNDER 10 seconds!
-# (4 points)
+# (14 points)
 def test_median_3():
     tc = TestCase()
     vals = [random.randrange(100000) for _ in range(100001)]
@@ -186,7 +186,7 @@ def naive_topk(l,k,keyf):
     revkey = lambda x: keyf(x) * -1
     return sorted(l, key=revkey)[0:k]
 
-# ( points)
+# (30 points)
 def test_topk_students():
     tc = TestCase()
     students = [ ('Peter', 33), ('Bob', 23), ('Alice', 21), ('Gertrud', 53) ]
