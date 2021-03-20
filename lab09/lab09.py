@@ -301,10 +301,13 @@ def test_corner_cases():
         t[0]
 
     with tc.assertRaises(IndexError):
-        t.version_iter(-1)
+        it = t.version_iter(-1)
+        next(it)
 
     with tc.assertRaises(IndexError):
-        t.version_iter(10)
+        it = t.version_iter(10)
+        next(it)
+
 
 ################################################################################
 # TEST HELPERS
