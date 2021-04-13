@@ -2,7 +2,7 @@
 
 ## Extensible Hashtables with Open Addressing
 
-In this lab you will build a hashtable implementation that uses **linear probing** to solve collisions and that increases the hashtable size automatically if the hashtable's fillfactor exceeds a given threshold. Once the hashtable if more than `fillfactor` full, you should rebuild it, doubling the number of buckets. For example, if you have a hashtable with fillfactor `0.5` and `100` buckets, then you need to rebuilt it using `200` buckets once it stores more than `0.5 * 100 = 50` elements.
+In this lab you will build a hashtable implementation that uses **linear probing** to solve collisions and that increases the hashtable size automatically if the hashtable's fillfactor exceeds a given threshold. Once the hashtable is more than `fillfactor` full, you should rebuild it, doubling the number of buckets. For example, if you have a hashtable with fillfactor `0.5` and `100` buckets, then you need to rebuilt it using `200` buckets once it stores more than `0.5 * 100 = 50` elements.
 
 You should implement all the methods shown below.
 
