@@ -1,0 +1,45 @@
+#+TITLE: Project
+
+See [[http://www.cs.iit.edu/~glavic/cs331/2021-spring/project/]] for the due date.
+
+* Organization
+
+Like the programming assignments, the project will be submitted through github. Note that the project is much more open-ended than the labs, so you should start early to ensure you can finish in time.
+
+* Description
+
+In this project you will implemented a sorting algorithm called *radix sort*. In contrast to most other sorting algorithms, this algorithm does not compare the full keys of elements to be sorted, i.e., it is not a *comparison-based* sort. In *radix sort*, each key is split into a sequence of parts. Some examples are:
+
+- For integers in base 10 we may split a number into its digits. For instance, the key =19015= corresponds to the sequence =[1,9,0,1,5]=
+- For strings, we can interpret them as sequences of characters. For instance, the key ='Peter'= corresponds to the sequence =['P','e','t','e','r']=
+- An 8-byte integer can be interpreted as a sequence of 8 1-byte integers
+
+The algorithms runs multiple iterations. In each iteration, the keys are sorted based on one position =i= in their sequence. Since the number of possible values at each position is relatively small, we can allocate to a bucket for each possible value and insert each key =k= into the bucket =k[i]=. For that we have to do one pass over the input array. Afterwards, the elements of the buckets are inserted into the array starting with the elements of first bucket, then all elements of the second bucket and so on. Buckets can be implemented using lists.
+
+Radix sort either starts from the first element of each key (=i=0=) and increase =i= in each iteration or starts from the largest possible position and decreases =i= in each iteration. The earlier is called the most-significant digit (MSD) variant of radix sort, because if the keys are numbers than the first digit is the most significant digit. Similarly, the later variant is called least-significant digit (LSD). The variant described above is LSD.
+
+Because each iterations passes over the keys in the left to right order in the array, the order established in the previous iterations will be retained for all keys =k1= and =k2= such that =k1[i] == k2[i]=. It follows that after we have iterated over all positions, the array will be sorted.
+
+Let =w= be  the maximum length of keys in the input and =n= the number of elements to be sorted. Radix sort runs in $O(w * n)$ time.
+
+You are free to implement any radix sort variant of your choice. For example, the variant that first counts the number of occurrences of each possible value during an iteration to be able to sort in-place. For more information about radix sort see the references below.
+
+** Sorting books
+
+In contrast to the labs, we do not provide skeleton code for the project with the exception of a method that sorts books:
+
+#+begin_src python
+def radix_a_book(book-url='https://www.gutenberg.org/files/84/84-0.txt'):
+    pass
+#+end_src
+
+This methods takes as input a url of a book (a =txt= file) and should return a python list with all words of the book sorted alphabetically.
+
+- *Note that that one challenge is that the keys (the words in the book) are not all of the same length. Depending on the variant of radix sort that you use, you may have to pad the keys to all be of the same length!*
+
+* References
+
+- Wikipedia entry: https://en.wikipedia.org/wiki/Radix_sort
+- Youtube video explaining radix sort: https://www.youtube.com/watch?v=6YyflHO9GdE
+- Youtube lecture, jump to around min 40: https://www.youtube.com/watch?v=Nz1KZXbghj8
+- https://www.codingeek.com/algorithms/radix-sort-explanation-pseudocode-and-implementation/
