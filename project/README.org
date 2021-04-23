@@ -83,6 +83,7 @@ This methods takes as input a url of a book (a =txt= file) and should return a p
 Books on https://www.gutenberg.org/ are encoded as unicode text. To be able to sort them using your ASCII string radix sort, you have to transform the book into ASCII and then split on whitespace. To avoid any ambiguity in the requirements, use the following helper method to create the list of words:
 
 #+begin_src python
+import urllib
 import requests
 
 def book_to_words(book_url='https://www.gutenberg.org/files/84/84-0.txt'):
