@@ -6,5 +6,5 @@ def book_to_words(book_url='https://www.gutenberg.org/files/84/84-0.txt'):
     bookascii = booktxt.encode('ascii','replace')
     return bookascii.split()
 
-def radix_a_book(book-url='https://www.gutenberg.org/files/84/84-0.txt'):
+def radix_a_book(book_url='https://www.gutenberg.org/files/84/84-0.txt'):
     pass
