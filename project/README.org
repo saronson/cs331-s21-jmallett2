@@ -72,7 +72,7 @@ mybytes: <b'Testing ????'>
 In contrast to the labs, we do not provide skeleton code for the project with the exception of a method that sorts books:
 
 #+begin_src python
-def radix_a_book(book-url='https://www.gutenberg.org/files/84/84-0.txt'):
+def radix_a_book(book_url='https://www.gutenberg.org/files/84/84-0.txt'):
     pass
 #+end_src
 
