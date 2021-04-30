@@ -1,6 +1,6 @@
 #+TITLE: Project
 
-See [[http://www.cs.iit.edu/~glavic/cs331/2021-spring/project/]] for the due date.
+**** Project due date: {{< importantdate "project" >}}
 
 * Organization
 
@@ -24,18 +24,74 @@ Let =w= be  the maximum length of keys in the input and =n= the number of elemen
 
 You are free to implement any radix sort variant of your choice. For example, the variant that first counts the number of occurrences of each possible value during an iteration to be able to sort in-place. For more information about radix sort see the references below.
 
+** Supported key types
+
+Your implementation only needs to support *strings consisting of ASCII characters* as keys. Python has a =bytes= type that is suited well for this purpose: https://docs.python.org/3.9/library/stdtypes.html#bytes
+Bytes literals are strings prefixed with =b=. Index-based access to characters returns integers (ASCII codes if your string consists only of ASCII characters). This will be handy for implementing radix sort.
+
+
+#+begin_src python :results output drawer
+mybytes = b'Testing'
+print(mybytes[0])
+#+end_src
+
+#+begin_example
+84
+#+end_example
+
+You can translate between regular strings and the =bytes= type like this:
+
+#+begin_src python :results output drawer
+mystr = 'Testing a string'
+mybytes = mystr.encode('ascii')
+print(f"mystr: <{mystr}>")
+print(f"mybytes: <{mybytes}>")
+#+end_src
+
+#+begin_example
+mystr: <Testing a string>
+mybytes: <b'Testing a string'>
+#+end_example
+
+Because for the project you only need to support ASCII, it may be necessary to translate Unicode strings to ASCII. This can be achieved like shown below. Note that for sorting books there will be a helper function =book_to_words= (described below) that you can use to ensure that your implementation is consistent with our test cases.
+
+#+begin_src python :results output drawer
+mystr = 'Testing ®À⃠⊙'
+mybytes = mystr.encode('ascii','replace')
+print(f"mystr: <{mystr}>")
+print(f"mybytes: <{mybytes}>")
+#+end_src
+
+#+begin_example
+mystr: <Testing ®À⃠⊙>
+mybytes: <b'Testing ????'>
+#+end_example
+
 ** Sorting books
 
 In contrast to the labs, we do not provide skeleton code for the project with the exception of a method that sorts books:
 
 #+begin_src python
-def radix_a_book(book-url='https://www.gutenberg.org/files/84/84-0.txt'):
+def radix_a_book(book_url='https://www.gutenberg.org/files/84/84-0.txt'):
     pass
 #+end_src
 
-This methods takes as input a url of a book (a =txt= file) and should return a python list with all words of the book sorted alphabetically.
+This methods takes as input a url of a book (a =txt= file) and should return a python list with all words of the book sorted alphabetically. For sake of this project, we define words to be the result of
 
 - *Note that that one challenge is that the keys (the words in the book) are not all of the same length. Depending on the variant of radix sort that you use, you may have to pad the keys to all be of the same length!*
+
+Books on https://www.gutenberg.org/ are encoded as unicode text. To be able to sort them using your ASCII string radix sort, you have to transform the book into ASCII and then split on whitespace. To avoid any ambiguity in the requirements, use the following helper method to create the list of words:
+
+#+begin_src python
+import urllib
+import requests
+
+def book_to_words(book_url='https://www.gutenberg.org/files/84/84-0.txt'):
+    booktxt = urllib.request.urlopen(book_url).read().decode()
+    bookascii = booktxt.encode('ascii','replace')
+    return bookascii.split()
+#+end_src
+
 
 * References
 
