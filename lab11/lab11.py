@@ -1,7 +1,8 @@
 from unittest import TestCase
+import random
 
 def quicksort(lst,pivot_fn):
-    qsort(lst,0,n-1,pivot_fn)
+    qsort(lst,0,len(lst) - 1,pivot_fn)
 
 def qsort(lst,low,high,pivot_fn):
     ### BEGIN SOLUTION
