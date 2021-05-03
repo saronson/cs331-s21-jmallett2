@@ -35,11 +35,11 @@ def test_lists_with_pfn(pfn):
     exp = list(range(0,1000))
 
     lst = list(range(0,1000))
-    quicksort(lst, pivot_first)
+    quicksort(lst, pfn)
     tc.assertEquals(lst,exp)
 
     lst = list(reversed(range(0,1000)))
-    quicksort(lst, pivot_first)
+    quicksort(lst, pfn)
     tc.assertEquals(lst,exp)
 
     for i in range(0,100):
