@@ -25,27 +25,28 @@ def pivot_median_of_three(lst,low,high):
 def randomize_list(size):
     lst = list(range(0,size))
     for i in range(0,size):
-        l = random.randint(0,size)
-        r = random.randint(0,size)
+        l = random.randrange(0,size)
+        r = random.randrange(0,size)
         lst[l], lst[r] = lst[r], lst[l]
     return lst
 
 def test_lists_with_pfn(pfn):
+    lstsize = 20
     tc = TestCase()
-    exp = list(range(0,1000))
+    exp = list(range(0,lstsize))
 
-    lst = list(range(0,1000))
-    quicksort(lst, pfn)
-    tc.assertEquals(lst,exp)
+    lst = list(range(0,lstsize))
+    quicksort(lst, pivot_first)
+    tc.assertEqual(lst,exp)
 
-    lst = list(reversed(range(0,1000)))
-    quicksort(lst, pfn)
-    tc.assertEquals(lst,exp)
+    lst = list(reversed(range(0,lstsize)))
+    quicksort(lst, pivot_first)
+    tc.assertEqual(lst,exp)
 
     for i in range(0,100):
-        lst = randomize_list(1000)
+        lst = randomize_list(lstsize)
         quicksort(lst, pfn)
-        tc.assertEquals(lst,exp)
+        tc.assertEqual(lst,exp)
 
 # 30 points
 def test_first():
