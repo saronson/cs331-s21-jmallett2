@@ -24,6 +24,15 @@ class Heap:
 
     def heapify(self, idx=0):
         ### BEGIN SOLUTION
+
+
+
+
+
+
+
+
+        
         ### END SOLUTION
 
     def add(self, x):

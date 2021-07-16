@@ -43,18 +43,47 @@ class LinkedList:
         """Implements `x = self[idx]`"""
         assert(isinstance(idx, int))
         ### BEGIN SOLUTION
+        idx = self._normalize_idx(idx)
+        if idx < 0 or idx > len(self):
+            raise IndexError()
+            
+        cur = self.head.next
+        for i in range(0, idx):
+            cur = cur.next
+            
+        return cur.val
         ### END SOLUTION
 
     def __setitem__(self, idx, value):
         """Implements `self[idx] = x`"""
         assert(isinstance(idx, int))
         ### BEGIN SOLUTION
+        idx = self._normalize_idx(idx)
+        if idx < 0 or idx > len(self):
+            raise IndexError()
+        
+        cur = self.head.next
+        for i in range(0, idx):
+            cur = cur.next
+        cur.val = value
         ### END SOLUTION
 
     def __delitem__(self, idx):
         """Implements `del self[idx]`"""
         assert(isinstance(idx, int))
         ### BEGIN SOLUTION
+        idx = self._normalize_idx(idx)
+        if idx < 0 or idx > len(self):
+            raise IndexError()
+        cur = self.head.next
+        for i in range(0, idx):
+            cur = cur.next
+        if idx == 0:
+            self.head = self.head.next
+        else:
+            cur.prior.next = cur.next
+            cur.next.prior = cur.prior
+        self.length += -1
         ### END SOLUTION
 
     ### cursor-based access ###
@@ -63,11 +92,16 @@ class LinkedList:
         """retrieves the value at the current cursor position"""
         assert self.cursor is not self.head
         ### BEGIN SOLUTION
+        return self.cursor.val
         ### END SOLUTION
 
     def cursor_set(self, idx):
         """sets the cursor to the node at the provided index"""
         ### BEGIN SOLUTION
+        cur = self.head.next
+        for i in range(0, idx):
+            cur = cur.next
+        self.cursor = cur
         ### END SOLUTION
 
     def cursor_move(self, offset):
@@ -78,12 +112,27 @@ class LinkedList:
         node as needed"""
         assert len(self) > 0
         ### BEGIN SOLUTION
+        if offset > 0:
+            for i in range(0, offset):
+                self.cursor = self.cursor.next
+                if self.cursor == self.head:
+                    self.cursor = self.cursor.next
+        elif offset < 0:
+            for i in range(0, offset * -1):
+                self.cursor = self.cursor.prior
+                if self.cursor == self.head:
+                    self.cursor = self.cursor.prior
         ### END SOLUTION
 
     def cursor_insert(self, value):
         """inserts a new value after the cursor and sets the cursor to the
         new node"""
         ### BEGIN SOLUTION
+        n = LinkedList.Node(value, prior=self.cursor, next=self.cursor.next)
+        self.cursor.next.prior = n
+        self.cursor.next = n
+        self.cursor = n
+        self.length += 1
         ### END SOLUTION
 
     def cursor_delete(self):
@@ -91,6 +140,10 @@ class LinkedList:
         following node"""
         assert self.cursor is not self.head and len(self) > 0
         ### BEGIN SOLUTION
+        self.cursor.prior.next = self.cursor.next
+        self.cursor.next.prior = self.cursor.prior
+        self.cursor = self.cursor.next
+        self.length += -1
         ### END SOLUTION
 
     ### stringification ###
@@ -101,11 +154,31 @@ class LinkedList:
         and enclosed by square brackets. E.g., for a list containing values
         1, 2 and 3, returns '[1, 2, 3]'."""
         ### BEGIN SOLUTION
+        out = "["
+        if self.length == 0:
+            return "[]"
+        for i in range(self.length):
+            out = out + str(self[i])
+            if i == self.length - 1:
+                out = out + "]"
+            else:
+                out = out + ", "
+        return out
         ### END SOLUTION
 
     def __repr__(self):
         """Supports REPL inspection. (Same behavior as `str`.)"""
         ### BEGIN SOLUTION
+        out = "["
+        if self.length == 0:
+            return "[]"
+        for i in range(self.length):
+            out = out + str(self[i])
+            if i == self.length - 1:
+                out = out + "]"
+            else:
+                out = out + ", "
+        return out
         ### END SOLUTION
 
     ### single-element manipulation ###

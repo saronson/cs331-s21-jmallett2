@@ -51,13 +51,42 @@ def check_delimiters(expr):
     delim_closers = '})]>'
 
     ### BEGIN SOLUTION
+    s = Stack()
+    for c in expr:
+        if c in delim_openers:
+            s.push(c)
+        elif c in delim_closers:
+            try:
+                t = s.pop()
+                if delim_openers.find(t) != delim_closers.find(s):
+                    s.push(t)
+            except:
+                return False
+    return s.empty()
+
+
+
+
+
+
+
+
+
+
+
+
     ### END SOLUTION
 
+    
+print(check_delimiters('()'))
 ################################################################################
 # CHECK DELIMITERS - TEST CASES
 ################################################################################
 # points: 5
 def test_check_delimiters_1():
+    
+
+
     tc = TestCase()
     tc.assertTrue(check_delimiters('()'))
     tc.assertTrue(check_delimiters('[]'))

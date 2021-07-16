@@ -23,21 +23,22 @@ def captured_output():
 
 # implement this function
 def is_perfect(n):
-    t = 1
+    t = 0
     if not isinstance(n,int):
         return False
     
-    if n == 1:
+    if n == 1:          #automatically returns false on 1 since it might say true otherwise
         return False
 
-    for x in range(2,n):
+    for x in range(1,n): #finds all factors of n
         if n % x == 0:
-            t = t + x
+            t = t + x   #adds those factors to the running total
         
     if t == n:
         return True
     else:
         return False
+
 
 # (3 points)
 def test1():
@@ -56,8 +57,9 @@ def test1():
 # implement this function
 def multiples_of_3_and_5(n):
     sum = 0
-    for x in range(1,n):
-        if x % 3 == 0 or x % 5 == 0:
+    
+    for x in range(n):
+        if (x % 3 == 0) or (x % 5 == 0):
             sum = sum + x
     
     return sum
@@ -91,6 +93,7 @@ def test3():
     tc.assertEqual(integer_right_triangles(60), 2)
     tc.assertEqual(integer_right_triangles(100), 0)
     tc.assertEqual(integer_right_triangles(180), 3)
+    
 
 #################################################################################
 # EXERCISE 4
