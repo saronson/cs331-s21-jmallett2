@@ -308,11 +308,11 @@ class ArrayList:
         """Returns a new ArrayList instance (with a separate data store), that
         contains the same values as this list."""
         ### BEGIN SOLUTION
-        temp = []
+        temp = []       #creates a temporary list to create the new arraylist from all at once
         for x in range(0, self.len):
             temp.append(self.__getitem__(x))
-        templist = ArrayList()
-        templist.data = ConstrainedList.create(temp)
+        templist = ArrayList() 
+        templist.data = ConstrainedList.create(temp) #creates constrainedlist with content from temp and sets that as the data for the new arraylist
         templist.len = len(temp)
         return templist
         ### END SOLUTION
@@ -321,7 +321,7 @@ class ArrayList:
         """Adds all elements, in order, from other --- an Iterable --- to this list."""
         ### BEGIN SOLUTION
         for x in range(0, len(other)):
-            self.append(other[x])
+            self.append(other[x])       #appends each item
         ### END SOLUTION
 
 
@@ -330,9 +330,12 @@ class ArrayList:
     def __iter__(self):
         """Supports iteration (via `iter(self)`)"""
         ### BEGIN SOLUTION
-        return self
+        i = 0
+        while i < self.len:
+            yield self[i]
+            i += 1
         ### END SOLUTION
-
+        
 ################################################################################
 # TEST CASES
 def arrayListToList(a):

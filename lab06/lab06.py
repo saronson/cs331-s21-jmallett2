@@ -56,23 +56,13 @@ def check_delimiters(expr):
         if c in delim_openers:
             s.push(c)
         elif c in delim_closers:
-            try:
-                t = s.pop()
-                if delim_openers.find(t) != delim_closers.find(s):
-                    s.push(t)
-            except:
-                return False
+                try:
+                    t = s.pop()
+                    if delim_openers.find(t) != delim_closers.find(c):
+                        return False
+                except:
+                    return False
     return s.empty()
-
-
-
-
-
-
-
-
-
-
 
 
     ### END SOLUTION
@@ -150,8 +140,46 @@ def infix_to_postfix(expr):
     postfix = []
     toks = expr.split()
     ### BEGIN SOLUTION
+    opp = {'*', '/','+', '-'}
+    for x in toks:
+        if str.isdigit(x):
+            postfix.append(x)
+        elif ops.empty() or ops.peek() == '(':
+            ops.push(x)
+        elif x == '(':
+            ops.push(x)
+        elif x == ')':
+            while not ops.empty():
+                temp = ops.pop()
+                if temp == '(':
+                    break
+                else:
+                    postfix.append(temp)
+        elif x in opp:
+            while True:
+                if prec.get(x) > prec.get(ops.peek()):
+                    ops.push(x)
+                    break
+                elif prec.get(x) == prec.get(ops.peek()):
+                    postfix.append(ops.pop())
+                    ops.push(x)
+                    break
+                elif prec.get(x) < prec.get(ops.peek()):
+                    postfix.append(ops.pop())
+                    if ops.empty():
+                        ops.push(x)
+                        break
+                elif ops.empty():
+                    break
+
+    while True:
+        if not ops.empty():
+            postfix.append(ops.pop())
+        else:
+            break
+
     ### END SOLUTION
-    return ' '.join(postfix)
+    return ' '.join(str(x) for x in postfix)
 
 ################################################################################
 # INFIX -> POSTFIX CONVERSION - TEST CASES
@@ -195,19 +223,55 @@ class Queue:
 
     def enqueue(self, val):
         ### BEGIN SOLUTION
+        print('called enqueue')
+        if (self.tail + 1) % len(self.data) == self.head:
+            raise RuntimeError
+        elif self.head == -1:
+            self.tail = 0
+            self.head = 0
+            self.data[self.tail] = val
+            print("enqueued + " + str(val) + ' at ' + str(self.tail))
+        else:
+            self.tail = (self.tail + 1) % len(self.data)
+            self.data[self.tail] = val
+            print("enqueued + " + str(val) + ' at ' + str(self.tail))
         ### END SOLUTION
 
     def dequeue(self):
         ### BEGIN SOLUTION
+        print('called dequeue')
+        if self.head == -1:
+           raise RuntimeError
+        elif self.head == self.tail:
+            temp = self.data[self.head]
+            self.data[self.head] = None
+            self.head = -1
+            self.tail = -1
+            print("returned + " + str(temp) + ' head is : ' + str(self.head) + ' - tail is: ' + str(self.tail))
+            return temp
+        else:
+            temp = self.data[self.head]
+            self.data[self.head] = None
+            self.head = (self.head + 1) % len(self.data)
+            print("returned + " + str(temp) + ' head is : ' + str(self.head) + ' - tail is: ' + str(self.tail))
+            return temp
         ### END SOLUTION
 
     def resize(self, newsize):
         assert(len(self.data) < newsize)
         ### BEGIN SOLUTION
+        for x in range(len(self.data), newsize):
+            self.data.append(None)
         ### END SOLUTION
 
     def empty(self):
         ### BEGIN SOLUTION
+        if self.data[self.tail] != None  and self.tail != -1:
+            return False
+        for x in range(self.head, self.tail):
+            if self.data[x] != None:
+                return False
+        return True
         ### END SOLUTION
 
     def __bool__(self):
@@ -215,7 +279,7 @@ class Queue:
 
     def __str__(self):
         if not(self):
-            return ''
+            return '' 
         return ', '.join(str(x) for x in self)
 
     def __repr__(self):
@@ -223,6 +287,10 @@ class Queue:
 
     def __iter__(self):
         ### BEGIN SOLUTION
+        i = 0
+        while i < len(self.data):
+            yield self.data[i]
+            i += 1
         ### END SOLUTION
 
 ################################################################################
