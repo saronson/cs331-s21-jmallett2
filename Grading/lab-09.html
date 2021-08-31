@@ -1,0 +1,123 @@
+
+<html>
+  <head>
+    <title>Lab 09 - Graded Solution</title>
+  </head>
+  <body>
+    <h1>Lab 09 - Graded Solution</h1>
+    <p><b>You scored 0% = 0.0 points for this lab.</b></p>
+    <ul>
+      <li><b>test_insert_1</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 0.093 sec</Li>
+<li><pre>IndexError: valid versions for time travel are 0 to 0, but was 3</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmp21uqyoyt/lab09-test.py", line 27, in test_insert_1
+    check_inserted([3,1,5],m)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmp21uqyoyt/lab09-test.py", line 16, in check_inserted
+    sortel = [ v for v in t.version_iter(len(vals) - i) ]
+  File "<tested-program>", line 146, in version_iter
+IndexError: valid versions for time travel are 0 to 0, but was 3
+</pre></li>
+      </ul>
+      </li>
+      <li><b>test_insert_2</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 0.091 sec</Li>
+<li><pre>IndexError: valid versions for time travel are 0 to 0, but was 71</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpdbfdjx5e/lab09-test.py", line 41, in test_insert_2
+    check_inserted(vals,m)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpdbfdjx5e/lab09-test.py", line 16, in check_inserted
+    sortel = [ v for v in t.version_iter(len(vals) - i) ]
+  File "<tested-program>", line 146, in version_iter
+IndexError: valid versions for time travel are 0 to 0, but was 71
+</pre></li>
+      </ul>
+      </li>
+      <li><b>test_lookup</b>
+      <ul>
+      <li>Grade Percentage: 10</li>
+      <li>Your solution failed this test case! taking 0.089 sec</Li>
+<li><pre>IndexError: valid versions for time travel are 0 to 0, but was 65</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmplp4o6ip0/lab09-test.py", line 52, in test_lookup
+    t = check_inserted(vals,m)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmplp4o6ip0/lab09-test.py", line 16, in check_inserted
+    sortel = [ v for v in t.version_iter(len(vals) - i) ]
+  File "<tested-program>", line 146, in version_iter
+IndexError: valid versions for time travel are 0 to 0, but was 65
+</pre></li>
+      </ul>
+      </li>
+      <li><b>test_delete_1</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 0.099 sec</Li>
+<li><pre>TypeError: 'NoneType' object is not iterable</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpaxe75nun/lab09-test.py", line 80, in test_delete_1
+    insert_check_delete([1,2,3,4,5],m)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpaxe75nun/lab09-test.py", line 70, in insert_check_delete
+    sortel = [ v for v in t.version_iter() ]
+TypeError: 'NoneType' object is not iterable
+</pre></li>
+      </ul>
+      </li>
+      <li><b>test_delete_2</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 0.088 sec</Li>
+<li><pre>TypeError: 'NoneType' object is not iterable</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmp8dtlucoz/lab09-test.py", line 92, in test_delete_2
+    insert_check_delete(vals,m)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmp8dtlucoz/lab09-test.py", line 70, in insert_check_delete
+    sortel = [ v for v in t.version_iter() ]
+TypeError: 'NoneType' object is not iterable
+</pre></li>
+      </ul>
+      </li>
+      <li><b>test_corner_cases</b>
+      <ul>
+      <li>Grade Percentage: 10</li>
+      <li>Your solution failed this test case! taking 0.089 sec</Li>
+<li><pre>AssertionError: Expected 6 but got 1</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpxkai7fw0/lab09-test.py", line 106, in test_corner_cases
+    assertEqual(t.num_versions(), len(range(0,10,2)) + 1)
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/assertions.py", line 53, in assertEqual
+    raise AssertionError(message)
+AssertionError: Expected 6 but got 1
+</pre></li>
+      </ul>
+      </li>
+    </ul>
+  </body>
+</html>

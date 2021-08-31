@@ -123,7 +123,7 @@ Version: 8
    -       -       -       8
 ```
 
-A naive way to store all versions of a tree is to create a copy at each operation and then execute the destructive operation (insert or delete) on this copy. However, for `n` insert operations this would require `O(n^2)` space (`SUM[i=0,n] i` nodes in total in the trees encoding the versions). In your implementation, you will use a smarter storage scheme that allows nodes to be shared across versions of the trees. We have to be careful when sharing nodes, because changing a node in version would then modify all other versions of the tree that share that node. The solution we are applied here is to use immutable data structures as discussed next.
+A naive way to store all versions of a tree is to create a copy at each operation and then execute the destructive operation (insert or delete) on this copy. However, for `n` insert operations this would require `O(n^2)` space (`SUM[i=0,n] i` nodes in total in the trees encoding the versions). In your implementation, you will use a smarter storage scheme that allows nodes to be shared across versions of the trees. We have to be careful when sharing nodes, because changing a node in one version would then modify all other versions of the tree that share that node. The solution we are applying here is to use immutable data structures as discussed next.
 
 ## Immutable Data Structures
 
@@ -137,8 +137,8 @@ Before discussing the algorithms for the insert and delete operations, we first 
 
 - your implementation should maintain a list `self.root_versions` that stores the roots of all versions of your tree from oldest to newest. That is, the root of the current version of the tree is `self.root_versions[-1]`.
 - the immutable node datastructure is provided as class `INode`. Do not modify this class.
-- when creating a HBStree, initially should contain one version that is the empty tree: `self.root_versions = [None]`.
-- `__getitem(self,key)` should return `key` if it exists in the current version of the tree and otherwise raise an `KeyError`.
+- when creating a HBStree, initially it should contain one version that is the empty tree: `self.root_versions = [None]`.
+- `__getitem__(self,key)` should return `key` if it exists in the current version of the tree and otherwise raise an `KeyError`.
 - `delete` should not throw an error if the key to be delete does not exist in the current version of the tree. Also do **not** create a new version when the key does not exist.
 - `insert` should not throw an error if the key to be inserted does already exist in the tree. In this case you should **not** create a new version of the tree.
 - `version_iter(self, timetravel=0)` iterate over all keys in a particular version of the tree in sort order. The version is specified using the `timetravel` argument. `0` is the current version, `1` is the previous version, and so on.
@@ -178,7 +178,7 @@ Note that since we replace all nodes on a path from the root to a leaf to deal w
 
 ### Delete
 
-The algorithm for deletion uses a similar trick. When deleting a node, we to create a new version of the parent of the node that no longer points at the deleted node and this again causes to replace all nodes on the path from the root to the parent of the deleted node. For example, let us delete key `3` (node `e`) in our example above. We need to replace `b` and `h` with new nodes (`l` and `m`). Node `m` becomes the root of the new version of the tree.
+The algorithm for deletion uses a similar trick. When deleting a node, we need to create a new version of the parent of the node that no longer points at the deleted node and this again causes to replace all nodes on the path from the root to the parent of the deleted node. For example, let us delete key `3` (node `e`) in our example above. We need to replace `b` and `h` with new nodes (`l` and `m`). Node `m` becomes the root of the new version of the tree.
 
 ```
 ================================================================================
